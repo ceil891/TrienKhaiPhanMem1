@@ -42,7 +42,7 @@ pipeline {
                 echo 'Copying to IIS root folder...'
                 // Stop IIS to safely overwrite files
                 bat 'iisreset /stop'
-                bat 'xcopy "%WORKSPACE%\\publish" "C:\\wwwroot\\myproject" /E /Y /I /R'
+                bat 'xcopy "%WORKSPACE%\\publish" "C:\\wwwroot\\test1-TrienKhaiPhamMem1" /E /Y /I /R'
                 bat 'iisreset /start'
             }
         }
@@ -53,7 +53,7 @@ pipeline {
                 powershell '''
                     Import-Module WebAdministration
                     if (-not (Test-Path IIS:\\Sites\\MySite)) {
-                        New-Website -Name "MySite" -Port 81 -PhysicalPath "C:\\wwwroot\\myproject" -Force
+                        New-Website -Name "MySite" -Port 87 -PhysicalPath "C:\\wwwroot\\test1-TrienKhaiPhamMem1" -Force
                     }
                 '''
             }
